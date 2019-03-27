@@ -4,7 +4,7 @@ defmodule Islands.Board.Cache.MixProject do
   def project do
     [
       app: :islands_board_cache,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       name: "Islands Board Cache",
@@ -50,9 +50,9 @@ defmodule Islands.Board.Cache.MixProject do
       {:log_reset, "~> 0.1"},
       {:file_only_logger, "~> 0.1"},
       {:persist_config, "~> 0.1"},
-      {:islands_coord, path: "../islands_coord"},
-      {:islands_island, path: "../islands_island"},
-      {:islands_board, path: "../islands_board"},
+      {:islands_coord, "~> 0.1"},
+      {:islands_island, "~> 0.1"},
+      {:islands_board, "~> 0.1"},
       {:logger_file_backend, "~> 0.0.9"},
       {:earmark, "~> 1.0", only: :dev},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
