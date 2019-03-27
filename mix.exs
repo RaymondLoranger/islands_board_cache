@@ -21,7 +21,7 @@ defmodule Islands.Board.Cache.MixProject do
 
   defp description do
     """
-    Board Cache for the Game of Islands.
+    Board Cache for the Game of Islands. Returns a random board.
     """
   end
 
