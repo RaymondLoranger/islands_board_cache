@@ -9,7 +9,7 @@ defmodule Islands.Board.Cache.Server do
   use PersistConfig
 
   alias __MODULE__
-  alias Islands.Board.Cache.Loader
+  alias Islands.Board.Cache.{Loader, Log}
   alias Islands.Board
 
   @type from :: GenServer.from()
@@ -53,6 +53,7 @@ defmodule Islands.Board.Cache.Server do
       |> :erlang.term_to_binary()
     )
 
+    :ok = Log.info(:board_persisted, {@path, board})
     {:noreply, state}
   end
 

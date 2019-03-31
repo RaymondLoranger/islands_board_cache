@@ -11,6 +11,16 @@ defmodule Islands.Board.Cache.Log do
     """
   end
 
+  info :board_persisted, {path, board} do
+    """
+    \nBoard persisted to external source...
+    • File:
+      #{path}
+    • Board: #{inspect(board)}
+    #{from()}
+    """
+  end
+
   warn :read_error, {path, reason, boards} do
     """
     \nIssue encountered reading external source...
