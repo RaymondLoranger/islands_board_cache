@@ -13,10 +13,10 @@ defmodule Islands.Board.Cache.Log do
 
   info :board_persisted, {path, board} do
     """
-    \nBoard persisted to external source...
+    \nBoard persisted to external storage...
     • File:
       #{path}
-    • Board: #{inspect(board)}
+    • Board: #{inspect(board, pretty: true)}
     #{from()}
     """
   end
@@ -29,7 +29,7 @@ defmodule Islands.Board.Cache.Log do
     • Issue:
       #{reason |> :file.format_error() |> inspect()}
     • Default boards used:
-      #{inspect(boards)}
+      #{inspect(boards, pretty: true)}
     • Board count: #{length(boards)}
     #{from()}
     """
@@ -43,7 +43,7 @@ defmodule Islands.Board.Cache.Log do
     • Issue:
       'empty list'
     • Default boards used:
-      #{inspect(boards)}
+      #{inspect(boards, pretty: true)}
     • Board count: #{length(boards)}
     #{from()}
     """
@@ -57,7 +57,7 @@ defmodule Islands.Board.Cache.Log do
     • Issue:
       'invalid binary'
     • Default boards used:
-      #{inspect(boards)}
+      #{inspect(boards, pretty: true)}
     • Board count: #{length(boards)}
     #{from()}
     """
@@ -71,7 +71,7 @@ defmodule Islands.Board.Cache.Log do
     • Issue:
       'binary not a set'
     • Default boards used:
-      #{inspect(boards)}
+      #{inspect(boards, pretty: true)}
     • Board count: #{length(boards)}
     #{from()}
     """
@@ -83,9 +83,9 @@ defmodule Islands.Board.Cache.Log do
     • File:
       #{path}
     • Exception:
-      #{inspect(exception)}
+      #{inspect(exception, pretty: true)}
     • Default boards used:
-      #{inspect(boards)}
+      #{inspect(boards, pretty: true)}
     • Board count: #{length(boards)}
     #{from()}
     """
