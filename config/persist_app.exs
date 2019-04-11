@@ -1,7 +1,5 @@
 use Mix.Config
 
-config :islands_board_cache, board_range: 1..10
-
 config :islands_board_cache,
   board_set_path: "#{File.cwd!()}/assets/board_set.binary"
 
@@ -29,6 +27,3 @@ config :islands_board_cache,
       |> Board.position_island(square)
     ]
   end
-
-config :islands_board_cache,
-  island_types: [:atoll, :dot, :l_shape, :s_shape, :square]

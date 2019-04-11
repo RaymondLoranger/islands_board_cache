@@ -12,11 +12,11 @@ defmodule Islands.Board.Cache.Server do
   alias Islands.Board.Cache.{Loader, Log}
   alias Islands.Board
 
-  @type from :: GenServer.from()
-  @type state :: {list, reference}
-
   @path Application.get_env(@app, :board_set_path)
   @refresh_interval :timer.minutes(10)
+
+  @type from :: GenServer.from()
+  @type state :: {[Board.t()], reference}
 
   @spec start_link(term) :: GenServer.on_start()
   def start_link(:ok), do: GenServer.start_link(Server, :ok, name: Server)
@@ -32,7 +32,7 @@ defmodule Islands.Board.Cache.Server do
   @spec init(term) :: {:ok, state}
   def init(:ok), do: {:ok, {Loader.read_boards(), schedule_refresh()}}
 
-  @spec handle_call(term, from, term) :: {:reply, Board.t(), term}
+  @spec handle_call(atom, from, state) :: {:reply, term, state}
   def handle_call(:get_board, _from, {boards, _timer_ref} = state) do
     {:reply, Enum.random(boards), state}
   end
@@ -41,7 +41,7 @@ defmodule Islands.Board.Cache.Server do
     {:reply, length(boards), state}
   end
 
-  @spec handle_cast(term, term) :: {:noreply, term}
+  @spec handle_cast(tuple, state) :: {:noreply, state}
   def handle_cast({:persist_board, board}, state) do
     File.write(
       @path,
