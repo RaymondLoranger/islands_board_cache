@@ -25,7 +25,7 @@ defmodule Islands.Board.Cache.IE do
     quote do
       import unquote(__MODULE__)
       alias unquote(__MODULE__)
-      alias Islands.Board.Cache.{App, Loader, Log, Server}
+      alias Islands.Board.Cache.{Loader, Log, Server, Top}
       alias Islands.Board.Cache
       alias Islands.{Board, Coord, Island}
       :ok
