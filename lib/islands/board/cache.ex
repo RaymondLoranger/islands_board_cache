@@ -4,11 +4,13 @@
 defmodule Islands.Board.Cache do
   use PersistConfig
 
-  @book_and_course_ref get_env(:book_and_course_ref)
+  @book_ref get_env(:book_ref)
+  @course_ref get_env(:course_ref)
 
   @moduledoc """
   Board Cache for the _Game of Islands_. Returns a random board.
-  \n##### #{@book_and_course_ref}
+  \n##### #{@book_ref}
+  \n##### #{@course_ref}
   """
 
   alias __MODULE__.Server

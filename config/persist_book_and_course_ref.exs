@@ -15,10 +15,3 @@ course_ref =
   by Mike and Nicole Clark.
   """
   |> String.replace("\n", "")
-
-config :islands_board_cache,
-  book_and_course_ref: """
-  #{book_ref}
-
-  #{course_ref}
-  """
