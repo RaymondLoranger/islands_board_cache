@@ -2,8 +2,9 @@
 
 Board Cache for the _Game of Islands_. Returns a random board.
 
-##### Inspired by the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
+##### Inspired by the book [Functional Web Development](https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix) by Lance Halvorsen.
 
+##### Also inspired by the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
