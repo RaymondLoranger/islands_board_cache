@@ -2,9 +2,13 @@
 # │ Inspired by the course "Multi-Player Bingo" by Mike and Nicole Clark. │
 # └───────────────────────────────────────────────────────────────────────┘
 defmodule Islands.Board.Cache do
+  use PersistConfig
+
+  @book_and_course_ref get_env(:book_and_course_ref)
+
   @moduledoc """
   Board Cache for the _Game of Islands_. Returns a random board.
-  \n##### #{Islands.Config.get(:course_ref)}
+  \n##### #{@book_and_course_ref}
   """
 
   alias __MODULE__.Server
