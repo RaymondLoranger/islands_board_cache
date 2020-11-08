@@ -6,7 +6,7 @@ defmodule Islands.Board.Cache.IE do
   alias Islands.{Board, Coord, Island}
 
   @goal 1..999
-  @path Application.get_env(@app, :board_set_path)
+  @path get_env(:board_set_path)
   @range 1..10
   @types [:atoll, :dot, :l_shape, :s_shape, :square]
 
@@ -25,7 +25,7 @@ defmodule Islands.Board.Cache.IE do
     quote do
       import unquote(__MODULE__)
       alias unquote(__MODULE__)
-      alias Islands.Board.Cache.{Loader, Log, Server, Top}
+      alias Islands.Board.Cache.{Loader, Log, Server, TopSup, Writer}
       alias Islands.Board.Cache
       alias Islands.{Board, Coord, Island}
       :ok

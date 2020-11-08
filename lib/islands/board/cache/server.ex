@@ -9,10 +9,9 @@ defmodule Islands.Board.Cache.Server do
   use PersistConfig
 
   alias __MODULE__
-  alias Islands.Board.Cache.{Loader, Log}
+  alias Islands.Board.Cache.{Loader, Writer}
   alias Islands.Board
 
-  @path Application.get_env(@app, :board_set_path)
   @refresh_interval :timer.minutes(10)
 
   @type from :: GenServer.from()
@@ -43,17 +42,7 @@ defmodule Islands.Board.Cache.Server do
 
   @spec handle_cast(tuple, state) :: {:noreply, state}
   def handle_cast({:persist_board, board}, state) do
-    File.write(
-      @path,
-      case File.read(@path) do
-        {:ok, binary} -> :erlang.binary_to_term(binary)
-        {:error, _reason} -> MapSet.new()
-      end
-      |> MapSet.put(board)
-      |> :erlang.term_to_binary()
-    )
-
-    :ok = Log.info(:board_persisted, {@path, board})
+    :ok = Writer.persist(board)
     {:noreply, state}
   end
 

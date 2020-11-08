@@ -1,7 +1,4 @@
-use Mix.Config
-
-config :islands_board_cache,
-  board_set_path: "#{File.cwd!()}/assets/board_set.binary"
+import Config
 
 config :islands_board_cache,
   default_boards: fn ->

@@ -35,6 +35,28 @@ defmodule Islands.Board.Cache.Log do
     """
   end
 
+  warn :read_error_while_persisting_board, {path, reason} do
+    """
+    \nIssue encountered reading external source while persisting board...
+    • File:
+      #{path}
+    • Issue:
+      #{reason |> :file.format_error() |> inspect()}
+    #{from()}
+    """
+  end
+
+  warn :write_error_while_persisting_board, {path, reason} do
+    """
+    \nIssue encountered writing to external source while persisting board...
+    • File:
+      #{path}
+    • Issue:
+      #{reason |> :file.format_error() |> inspect()}
+    #{from()}
+    """
+  end
+
   warn :empty_list, {path, boards} do
     """
     \nEmpty list of boards read from external source...

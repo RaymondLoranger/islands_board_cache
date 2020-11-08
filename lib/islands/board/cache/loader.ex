@@ -9,8 +9,8 @@ defmodule Islands.Board.Cache.Loader do
   alias Islands.Board.Cache.Log
   alias Islands.Board
 
-  @boards Application.get_env(@app, :default_boards).()
-  @path Application.get_env(@app, :board_set_path)
+  @boards get_env(:default_boards).()
+  @path get_env(:board_set_path)
 
   @doc """
   Reads a binary file encoding a set of boards.
