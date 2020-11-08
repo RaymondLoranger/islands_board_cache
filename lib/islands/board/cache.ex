@@ -9,7 +9,10 @@ defmodule Islands.Board.Cache do
 
   @moduledoc """
   Board Cache for the _Game of Islands_. Returns a random board.
-  ##### #{@book_ref}<br>##### #{@course_ref}
+
+  ##### Inspired by the book [Functional Web Development](https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix) by Lance Halvorsen.
+
+  ##### Also inspired by the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
   """
 
   alias __MODULE__.Server
