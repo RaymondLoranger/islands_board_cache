@@ -9,8 +9,8 @@ defmodule Islands.Board.Cache do
 
   @moduledoc """
   Board Cache for the _Game of Islands_. Returns a random board.
-
   ##### #{@book_ref}
+  <br>
   ##### #{@course_ref}
   """
 
