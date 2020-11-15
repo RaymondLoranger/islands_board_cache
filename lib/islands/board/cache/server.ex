@@ -6,7 +6,6 @@ defmodule Islands.Board.Cache.Server do
   """
 
   use GenServer
-  use PersistConfig
 
   alias __MODULE__
   alias Islands.Board.Cache.{Loader, Writer}

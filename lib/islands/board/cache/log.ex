@@ -35,9 +35,9 @@ defmodule Islands.Board.Cache.Log do
     """
   end
 
-  warn :read_error_while_persisting_board, {path, reason} do
+  warn :read_error_upon_persisting_board, {path, reason} do
     """
-    \nIssue encountered reading external source while persisting board...
+    \nIssue encountered reading external source upon persisting board...
     • File:
       #{path}
     • Issue:
@@ -46,9 +46,9 @@ defmodule Islands.Board.Cache.Log do
     """
   end
 
-  warn :write_error_while_persisting_board, {path, reason} do
+  warn :write_error_upon_persisting_board, {path, reason} do
     """
-    \nIssue encountered writing to external source while persisting board...
+    \nIssue encountered writing to external source upon persisting board...
     • File:
       #{path}
     • Issue:

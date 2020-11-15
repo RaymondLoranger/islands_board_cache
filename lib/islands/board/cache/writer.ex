@@ -21,7 +21,7 @@ defmodule Islands.Board.Cache.Writer do
           :erlang.binary_to_term(binary)
 
         {:error, reason} ->
-          :ok = Log.warn(:read_error_while_persisting_board, {@path, reason})
+          :ok = Log.warn(:read_error_upon_persisting_board, {@path, reason})
           MapSet.new()
       end
       |> MapSet.put(board)
@@ -32,7 +32,7 @@ defmodule Islands.Board.Cache.Writer do
         :ok = Log.info(:board_persisted, {@path, board})
 
       {:error, reason} ->
-        :ok = Log.warn(:write_error_while_persisting_board, {@path, reason})
+        :ok = Log.warn(:write_error_upon_persisting_board, {@path, reason})
     end
   end
 end

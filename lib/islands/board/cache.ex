@@ -2,17 +2,12 @@
 # │ Inspired by the course "Multi-Player Bingo" by Mike and Nicole Clark. │
 # └───────────────────────────────────────────────────────────────────────┘
 defmodule Islands.Board.Cache do
-  use PersistConfig
-
-  @book_ref get_env(:book_ref)
-  @course_ref get_env(:course_ref)
-
   @moduledoc """
   Board Cache for the _Game of Islands_. Returns a random board.
 
   ##### Inspired by the book [Functional Web Development](https://pragprog.com/book/lhelph/functional-web-development-with-elixir-otp-and-phoenix) by Lance Halvorsen.
 
-  ##### Also inspired by the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
+  ##### But mostly inspired by the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
   """
 
   alias __MODULE__.Server
