@@ -38,7 +38,7 @@ defmodule Islands.Board.Cache do
   end
 
   @doc """
-  Persists the given board to the configured external source.
+  Persists the given board to the configured external file.
   """
   @spec persist_board(Board.t()) :: :ok
   def persist_board(%Board{} = board) do
@@ -46,7 +46,7 @@ defmodule Islands.Board.Cache do
   end
 
   @doc """
-  Refreshes the cache from the configured external source and resets the timer.
+  Refreshes the cache from the configured external file and resets the timer.
   """
   @spec refresh :: :refresh
   def refresh, do: send(Server, :refresh)

@@ -16,7 +16,7 @@ defmodule Islands.Board.Cache.IE do
   #
   #   use Islands.Board.Cache.IE
   #   Cache.board_count
-  #   => change assets/board_set.binary
+  #   => change 'assets/board_set.binary'
   #   Cache.refresh
   #   Cache.board_count
   #   => see that the change is reflected
@@ -32,7 +32,9 @@ defmodule Islands.Board.Cache.IE do
     end
   end
 
-  @doc "Writes a set of `goal` random boards."
+  @doc """
+  Writes an encoded set of `goal` random boards to the configured external file.
+  """
   @spec write_board_set(pos_integer) :: :ok
   def write_board_set(goal) when is_integer(goal) and goal in @goal do
     :ok = File.write(@path, goal |> gen_set() |> :erlang.term_to_binary())

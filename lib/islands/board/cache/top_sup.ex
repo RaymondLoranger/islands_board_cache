@@ -1,6 +1,4 @@
 defmodule Islands.Board.Cache.TopSup do
-  @moduledoc false
-
   use Application
 
   alias __MODULE__

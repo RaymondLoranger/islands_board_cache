@@ -1,6 +1,6 @@
 defmodule Islands.Board.Cache.Writer do
   @moduledoc """
-  Persists a given board to the configured external source.
+  Persists a board to the configured external file.
   """
 
   use PersistConfig
@@ -11,28 +11,18 @@ defmodule Islands.Board.Cache.Writer do
   @path get_env(:board_set_path)
 
   @doc """
-  Persists `board` to the configured external source.
+  Persists `board` to the configured external file.
   """
   @spec persist(Board.t()) :: :ok
   def persist(board) do
-    binary =
-      case File.read(@path) do
-        {:ok, binary} ->
-          :erlang.binary_to_term(binary)
-
-        {:error, reason} ->
-          :ok = Log.warn(:read_error_upon_persisting_board, {@path, reason})
-          MapSet.new()
-      end
-      |> MapSet.put(board)
-      |> :erlang.term_to_binary()
-
-    case File.write(@path, binary) do
-      :ok ->
-        :ok = Log.info(:board_persisted, {@path, board})
-
+    with {:ok, binary} <- File.read(@path),
+         set = binary |> :erlang.binary_to_term() |> MapSet.put(board),
+         binary = :erlang.term_to_binary(set),
+         :ok <- File.write(@path, binary) do
+      :ok = Log.info(:board_persisted, {@path, __ENV__})
+    else
       {:error, reason} ->
-        :ok = Log.warn(:write_error_upon_persisting_board, {@path, reason})
+        :ok = Log.error(:error_persisting_board, {@path, reason, __ENV__})
     end
   end
 end

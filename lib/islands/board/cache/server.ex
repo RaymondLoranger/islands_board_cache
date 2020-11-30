@@ -1,6 +1,6 @@
 defmodule Islands.Board.Cache.Server do
   @moduledoc """
-  A process that loads a list of boards from an external source
+  A process that loads a list of `boards` from an external file
   and caches it for expedient access. The cache is automatically
   refreshed every 10 minutes.
   """
@@ -50,4 +50,6 @@ defmodule Islands.Board.Cache.Server do
     Process.cancel_timer(timer_ref, info: false)
     {:noreply, {Loader.read_boards(), schedule_refresh()}}
   end
+
+  def handle_info(_message, state), do: {:noreply, state}
 end
