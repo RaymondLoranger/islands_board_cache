@@ -25,17 +25,13 @@ defmodule Islands.Board.Cache do
       {5, 0}
   """
   @spec get_board :: Board.t()
-  def get_board do
-    GenServer.call(Server, :get_board)
-  end
+  def get_board, do: GenServer.call(Server, :get_board)
 
   @doc """
   Returns the number of boards in the cache.
   """
   @spec board_count :: pos_integer
-  def board_count do
-    GenServer.call(Server, :board_count)
-  end
+  def board_count, do: GenServer.call(Server, :board_count)
 
   @doc """
   Persists the given board to the configured external file.
