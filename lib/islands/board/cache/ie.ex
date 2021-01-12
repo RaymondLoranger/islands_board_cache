@@ -37,7 +37,7 @@ defmodule Islands.Board.Cache.IE do
   """
   @spec write_board_set(pos_integer) :: :ok
   def write_board_set(goal) when is_integer(goal) and goal in @goal do
-    :ok = File.write(@path, goal |> gen_set() |> :erlang.term_to_binary())
+    :ok = File.write(@path, gen_set(goal) |> :erlang.term_to_binary())
   end
 
   @doc "Generates a set of `goal` random boards."
@@ -53,7 +53,7 @@ defmodule Islands.Board.Cache.IE do
   defp gen_set({set, size}, goal) when size >= goal, do: set
 
   defp gen_set({set, _size}, goal) do
-    set |> MapSet.put(gen_board()) |> pair_with_size() |> gen_set(goal)
+    MapSet.put(set, gen_board()) |> pair_with_size() |> gen_set(goal)
   end
 
   # Pairs a set with its size as a tuple.

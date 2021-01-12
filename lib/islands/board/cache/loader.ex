@@ -1,7 +1,7 @@
 defmodule Islands.Board.Cache.Loader do
   @moduledoc """
   Reads the configured external file encoding a set of boards.
-  Re-creates the set and converts it to a list of boards.
+  Re-creates the set and turns it into a list of boards.
   """
 
   use PersistConfig
@@ -14,13 +14,13 @@ defmodule Islands.Board.Cache.Loader do
 
   @doc """
   Reads the configured external file encoding a set of boards.
-  Re-creates the set and converts it to a list of boards.
+  Re-creates the set and turns it into a list of boards.
   """
   @spec read_boards :: [Board.t()]
   def read_boards do
     with {:ok, binary} <- File.read(@path),
          [_ | _] = boards <-
-           binary |> :erlang.binary_to_term() |> MapSet.to_list() do
+           :erlang.binary_to_term(binary) |> MapSet.to_list() do
       :ok = Log.info(:boards_read, {@path, boards, __ENV__})
       boards
     else

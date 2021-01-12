@@ -16,7 +16,7 @@ defmodule Islands.Board.Cache.Writer do
   @spec persist(Board.t()) :: :ok
   def persist(board) do
     with {:ok, binary} <- File.read(@path),
-         set = binary |> :erlang.binary_to_term() |> MapSet.put(board),
+         set = :erlang.binary_to_term(binary) |> MapSet.put(board),
          binary = :erlang.term_to_binary(set),
          :ok <- File.write(@path, binary) do
       :ok = Log.info(:board_persisted, {@path, __ENV__})

@@ -21,7 +21,7 @@ defmodule Islands.Board.Cache.Log do
     • File:
       #{path}
     • Error:
-      #{reason |> :file.format_error() |> inspect()}
+      #{:file.format_error(reason) |> inspect()}
     • Default boards used:
       #{inspect(boards)}
     • Board count: #{length(boards)}
@@ -62,7 +62,7 @@ defmodule Islands.Board.Cache.Log do
     • File:
       #{path}
     • Error:
-      #{reason |> :file.format_error() |> inspect()}
+      #{:file.format_error(reason) |> inspect()}
     #{from()}
     """
   end
