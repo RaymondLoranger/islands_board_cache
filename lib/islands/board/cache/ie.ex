@@ -83,7 +83,7 @@ defmodule Islands.Board.Cache.IE do
     end
   end
 
-  # Generates a random coordinate.
+  # Generates a random coordinates struct.
   @spec gen_origin :: Coord.t()
   defp gen_origin do
     {:ok, origin} = Coord.new(Enum.random(@range), Enum.random(@range))
