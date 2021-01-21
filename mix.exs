@@ -4,7 +4,7 @@ defmodule Islands.Board.Cache.MixProject do
   def project do
     [
       app: :islands_board_cache,
-      version: "0.1.16",
+      version: "0.1.17",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Board Cache",
@@ -52,8 +52,6 @@ defmodule Islands.Board.Cache.MixProject do
       {:islands_coord, "~> 0.1"},
       {:islands_island, "~> 0.1"},
       {:log_reset, "~> 0.1"},
-      {:mix_tasks,
-       github: "RaymondLoranger/mix_tasks", only: :dev, runtime: false},
       {:persist_config, "~> 0.4", runtime: false}
     ]
   end
