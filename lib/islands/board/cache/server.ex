@@ -6,12 +6,14 @@ defmodule Islands.Board.Cache.Server do
   """
 
   use GenServer
+  use PersistConfig
 
   alias __MODULE__
   alias Islands.Board.Cache.{Loader, Writer}
   alias Islands.Board
 
-  @refresh_interval :timer.minutes(10)
+  @refresh_interval get_env(:refresh_interval)
+  @timeout get_env(:timeout)
 
   @type from :: GenServer.from()
   @type state :: {[Board.t()], reference}
@@ -27,29 +29,29 @@ defmodule Islands.Board.Cache.Server do
 
   ## Callbacks
 
-  @spec init(term) :: {:ok, state}
-  def init(:ok), do: {:ok, {Loader.read_boards(), schedule_refresh()}}
+  @spec init(term) :: {:ok, state, timeout}
+  def init(:ok), do: {:ok, {Loader.read_boards(), schedule_refresh()}, @timeout}
 
-  @spec handle_call(atom, from, state) :: {:reply, term, state}
+  @spec handle_call(atom, from, state) :: {:reply, term, state, timeout}
   def handle_call(:get_board, _from, {boards, _timer_ref} = state) do
-    {:reply, Enum.random(boards), state}
+    {:reply, Enum.random(boards), state, @timeout}
   end
 
   def handle_call(:board_count, _from, {boards, _timer_ref} = state) do
-    {:reply, length(boards), state}
+    {:reply, length(boards), state, @timeout}
   end
 
-  @spec handle_cast(tuple, state) :: {:noreply, state}
+  @spec handle_cast(tuple, state) :: {:noreply, state, timeout}
   def handle_cast({:persist_board, board}, state) do
     :ok = Writer.persist(board)
-    {:noreply, state}
+    {:noreply, state, @timeout}
   end
 
-  @spec handle_info(term, state) :: {:noreply, state}
+  @spec handle_info(term, state) :: {:noreply, state, timeout}
   def handle_info(:refresh, {_boards, timer_ref} = _state) do
     Process.cancel_timer(timer_ref, info: false)
-    {:noreply, {Loader.read_boards(), schedule_refresh()}}
+    {:noreply, {Loader.read_boards(), schedule_refresh()}, @timeout}
   end
 
-  def handle_info(_message, state), do: {:noreply, state}
+  def handle_info(_message, state), do: {:noreply, state, @timeout}
 end
