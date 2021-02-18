@@ -5,6 +5,7 @@ config :islands_board_cache,
   doctest: %{
     Islands.Board.Cache => [
       get_board: 0,
+      board_count: 0,
     ],
   }
 
@@ -12,8 +13,6 @@ config :islands_board_cache,
 config :islands_board_cache,
   excluded_tags: [
     # :islands_board_cache_test_1,
-
-    # :islands_board_cache_loader_test_1,
-
+    # :islands_board_cache_generator_test_1,
     # :islands_board_cache_server_test_1,
   ]

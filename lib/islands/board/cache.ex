@@ -29,21 +29,14 @@ defmodule Islands.Board.Cache do
 
   @doc """
   Returns the number of boards in the cache.
+
+  ## Examples
+
+      iex> alias Islands.Board.Cache
+      iex> alias Islands.Board.Cache.Generator
+      iex> Cache.board_count == Generator.gen_boards() |> length()
+      true
   """
   @spec board_count :: pos_integer
   def board_count, do: GenServer.call(Server, :board_count)
-
-  @doc """
-  Persists the given board to the configured external file.
-  """
-  @spec persist_board(Board.t()) :: :ok
-  def persist_board(%Board{} = board) do
-    GenServer.cast(Server, {:persist_board, board})
-  end
-
-  @doc """
-  Refreshes the cache from the configured external file and resets the timer.
-  """
-  @spec refresh :: :refresh
-  def refresh, do: send(Server, :refresh)
 end

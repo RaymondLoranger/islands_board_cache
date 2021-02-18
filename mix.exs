@@ -4,7 +4,7 @@ defmodule Islands.Board.Cache.MixProject do
   def project do
     [
       app: :islands_board_cache,
-      version: "0.1.18",
+      version: "0.1.19",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Board Cache",
@@ -27,7 +27,7 @@ defmodule Islands.Board.Cache.MixProject do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*", "assets", "config/persist*.exs"],
+      files: ["lib", "mix.exs", "README*", "config/persist*.exs"],
       maintainers: ["Raymond Loranger"],
       licenses: ["MIT"],
       links: %{"GitHub" => source_url()}
