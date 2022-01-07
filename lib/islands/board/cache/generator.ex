@@ -18,7 +18,7 @@ defmodule Islands.Board.Cache.Generator do
   @spec gen_boards :: [Board.t()]
   def gen_boards do
     :ok = Log.info(:generating_boards, {@goal, __ENV__})
-    gen_set(MapSet.new(), 0, @goal) |> MapSet.to_list()
+    MapSet.new() |> gen_set(0, @goal) |> MapSet.to_list()
   end
 
   ## Private functions

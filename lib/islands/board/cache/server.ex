@@ -12,18 +12,20 @@ defmodule Islands.Board.Cache.Server do
 
   @timeout get_env(:timeout)
 
-  @type from :: GenServer.from()
+  @typedoc "Server state"
   @type state :: [Board.t()]
 
   @spec start_link(term) :: GenServer.on_start()
-  def start_link(:ok), do: GenServer.start_link(Server, :ok, name: Server)
+  def start_link(:ok = _init_arg),
+    do: GenServer.start_link(Server, :ok, name: Server)
 
   ## Callbacks
 
   @spec init(term) :: {:ok, state, timeout}
-  def init(:ok), do: {:ok, Generator.gen_boards(), @timeout}
+  def init(:ok = _init_arg), do: {:ok, Generator.gen_boards(), @timeout}
 
-  @spec handle_call(atom, from, state) :: {:reply, term, state, timeout}
+  @spec handle_call(atom, GenServer.from(), state) ::
+          {:reply, Board.t(), state, timeout}
   def handle_call(:get_board, _from, boards) do
     {:reply, Enum.random(boards), boards, @timeout}
   end
@@ -31,4 +33,7 @@ defmodule Islands.Board.Cache.Server do
   def handle_call(:board_count, _from, boards) do
     {:reply, length(boards), boards, @timeout}
   end
+
+  @spec handle_info(term, state) :: {:noreply, state}
+  def handle_info(_message, state), do: {:noreply, state}
 end

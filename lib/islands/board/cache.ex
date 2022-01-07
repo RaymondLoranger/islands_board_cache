@@ -34,7 +34,7 @@ defmodule Islands.Board.Cache do
 
       iex> alias Islands.Board.Cache
       iex> alias Islands.Board.Cache.Generator
-      iex> Cache.board_count == Generator.gen_boards() |> length()
+      iex> Cache.board_count() == Generator.gen_boards() |> length()
       true
   """
   @spec board_count :: pos_integer

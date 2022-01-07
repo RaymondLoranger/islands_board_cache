@@ -4,10 +4,8 @@ defmodule Islands.Board.Cache.Log do
   info :generating_boards, {goal, env} do
     """
     \nGenerating a list of random boards...
-    • Inside function:
-      #{fun(env)}
     • Number of boards required: #{goal}
-    #{from()}
+    #{from(env, __MODULE__)}
     """
   end
 end
