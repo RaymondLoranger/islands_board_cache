@@ -8,6 +8,7 @@ defmodule Islands.Board.Cache.Generator do
   alias Islands.Board.Cache.Log
   alias Islands.{Board, Coord, Island}
 
+  @compact_boards get_env(:compact_boards)
   @goal get_env(:boards_required)
   @range 1..10
   @types [:atoll, :dot, :l_shape, :s_shape, :square]
@@ -18,14 +19,14 @@ defmodule Islands.Board.Cache.Generator do
   @spec gen_boards :: [Board.t()]
   def gen_boards do
     :ok = Log.info(:generating_boards, {@goal, __ENV__})
-    MapSet.new() |> gen_set(0, @goal) |> MapSet.to_list()
+    MapSet.new(@compact_boards) |> gen_set(0, @goal) |> MapSet.to_list()
   end
 
   ## Private functions
 
   # Generates a set of random boards.
   @spec gen_set(MapSet.t(), non_neg_integer, pos_integer) :: MapSet.t(Board.t())
-  defp gen_set(set, size, goal) when size == goal, do: set
+  defp gen_set(set, size, goal) when size >= goal, do: set
 
   defp gen_set(set, _size, goal) do
     set = MapSet.put(set, gen_board())
