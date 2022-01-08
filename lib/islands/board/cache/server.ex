@@ -10,7 +10,7 @@ defmodule Islands.Board.Cache.Server do
   alias Islands.Board.Cache.Generator
   alias Islands.Board
 
-  @timeout get_env(:timeout)
+  @timeout :infinity
 
   @typedoc "Server state"
   @type state :: [Board.t()]
