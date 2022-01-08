@@ -8,7 +8,7 @@ defmodule Islands.Board.Cache.Generator do
   alias Islands.Board.Cache.Log
   alias Islands.{Board, Coord, Island}
 
-  @boards get_env(:compact_boards)
+  @boards get_env(:dense_boards)
   @board_count length(@boards)
   @goal 99
   @range 1..10
