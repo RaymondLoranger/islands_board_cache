@@ -3,14 +3,10 @@ defmodule Islands.Board.CacheTest do
 
   alias Islands.Board.Cache
 
-  doctest Cache, only: TestHelper.doctest(Cache)
+  doctest Cache, only: TestHelper.doctests(Cache)
 
   @tag :islands_board_cache_test_1
-  TestHelper.config_level(__MODULE__)
-
   test "the truth" do
     assert 1 + 2 == 3
   end
-
-  Logger.configure(level: :all)
 end

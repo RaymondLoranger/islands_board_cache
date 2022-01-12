@@ -7,13 +7,9 @@ defmodule Islands.Board.Cache.ServerTest do
 
   describe "Server.start_link/1" do
     @tag :islands_board_cache_server_test_1
-    TestHelper.config_level(__MODULE__)
-
     test "returns a tuple" do
       assert {:error, {:already_started, pid}} = Server.start_link(:ok)
       assert is_pid(pid) and pid == Process.whereis(Server)
     end
-
-    Logger.configure(level: :all)
   end
 end

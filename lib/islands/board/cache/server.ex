@@ -1,6 +1,6 @@
 defmodule Islands.Board.Cache.Server do
   @moduledoc """
-  Process that generates a list of `boards` and caches it for expedient access.
+  Process that generates a list of boards and caches it for expedient access.
   """
 
   use GenServer
@@ -15,6 +15,9 @@ defmodule Islands.Board.Cache.Server do
   @typedoc "Server state"
   @type state :: [Board.t()]
 
+  @doc """
+  Spawns a cache server process registered with the module name.
+  """
   @spec start_link(term) :: GenServer.on_start()
   def start_link(:ok = _init_arg),
     do: GenServer.start_link(Server, :ok, name: Server)

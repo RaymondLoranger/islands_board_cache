@@ -33,9 +33,8 @@ defmodule Islands.Board.Cache do
   ## Examples
 
       iex> alias Islands.Board.Cache
-      iex> alias Islands.Board.Cache.Generator
-      iex> Cache.board_count() == Generator.gen_boards() |> length()
-      true
+      iex> Cache.board_count()
+      99
   """
   @spec board_count :: pos_integer
   def board_count, do: GenServer.call(Server, :board_count)
