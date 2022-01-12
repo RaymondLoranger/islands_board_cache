@@ -2,7 +2,7 @@ import Config
 
 # Allows to run the doctest(s) of one function at a time...
 config :islands_board_cache,
-  doctest: %{
+  doctests: %{
     Islands.Board.Cache => [
       get_board: 0,
       board_count: 0,

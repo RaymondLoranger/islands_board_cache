@@ -3,7 +3,7 @@ defmodule TestHelper do
 
   @spec doctests(module) :: [Macro.Env.name_arity()]
   def doctests(module) when is_atom(module) do
-    get_env(:doctest, %{})[module] || []
+    get_env(:doctests, %{})[module] || []
   end
 
   @spec excluded_tags :: [atom]
