@@ -4,7 +4,7 @@ defmodule Islands.Board.Cache.MixProject do
   def project do
     [
       app: :islands_board_cache,
-      version: "0.1.31",
+      version: "0.1.32",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Board Cache",
@@ -47,7 +47,7 @@ defmodule Islands.Board.Cache.MixProject do
     [
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
-      {:file_only_logger, "~> 0.1"},
+      {:file_only_logger, "~> 0.2"},
       {:islands_board, "~> 0.1"},
       {:islands_coord, "~> 0.1"},
       {:islands_island, "~> 0.1"},
