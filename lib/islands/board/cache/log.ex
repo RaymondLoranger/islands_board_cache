@@ -5,7 +5,7 @@ defmodule Islands.Board.Cache.Log do
     """
     \nGenerating a list of random boards...
     • Number of boards required: #{goal}
-    #{from(env, __MODULE__)}
+    #{from(env, __MODULE__)}\
     """
   end
 end
