@@ -19,13 +19,13 @@ defmodule Islands.Board.Cache.Server do
   Spawns a cache server process registered with the module name.
   """
   @spec start_link(term) :: GenServer.on_start()
-  def start_link(:ok = _init_arg),
+  def start_link(_init_arg = :ok),
     do: GenServer.start_link(Server, :ok, name: Server)
 
   ## Callbacks
 
   @spec init(term) :: {:ok, state, timeout}
-  def init(:ok = _init_arg), do: {:ok, Generator.gen_boards(), @timeout}
+  def init(_init_arg = :ok), do: {:ok, Generator.gen_boards(), @timeout}
 
   @spec handle_call(atom, GenServer.from(), state) ::
           {:reply, Board.t(), state, timeout}

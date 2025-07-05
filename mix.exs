@@ -4,7 +4,7 @@ defmodule Islands.Board.Cache.MixProject do
   def project do
     [
       app: :islands_board_cache,
-      version: "0.1.36",
+      version: "0.1.37",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Islands Board Cache",
