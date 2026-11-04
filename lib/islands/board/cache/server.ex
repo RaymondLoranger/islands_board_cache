@@ -1,6 +1,7 @@
 defmodule Islands.Board.Cache.Server do
   @moduledoc """
   Process that generates a list of boards and caches it for expedient access.
+
   Can be made to time out after a period of inactivity.
   """
 
