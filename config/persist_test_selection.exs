@@ -1,6 +1,6 @@
 import Config
 
-# Allows to run the doctest(s) of one function at a time...
+# Allows to run the doctest(s) of one or a few functions at a time...
 config :islands_board_cache,
   doctests: %{
     Islands.Board.Cache => [
@@ -9,7 +9,7 @@ config :islands_board_cache,
     ],
   }
 
-# Allows to run one test at a time...
+# Allows to run one or a few tests at a time...
 config :islands_board_cache,
   excluded_tags: [
     # :islands_board_cache_test_1,

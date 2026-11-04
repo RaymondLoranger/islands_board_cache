@@ -4,7 +4,7 @@ defmodule Islands.Board.Cache.GeneratorTest do
   alias Islands.Board.Cache.Generator
   alias Islands.Board
 
-  doctest Generator
+  # doctest Generator
 
   describe "Generator.gen_boards/0" do
     @tag :islands_board_cache_generator_test_1

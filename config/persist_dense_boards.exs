@@ -11,7 +11,7 @@ clusters = [
 ]
 
 # Offsets of islands clustered in an area of 3 rows by 6 columns...
-islands = [
+offsets = [
   atoll: {0, 4},
   dot: {0, 3},
   l_shape: {0, 0},
@@ -21,7 +21,7 @@ islands = [
 
 dense_boards =
   for {_desc, {row, col}} <- clusters do
-    for {type, {row_offset, col_offset}} <- islands do
+    for {type, {row_offset, col_offset}} <- offsets do
       {:ok, origin} = Coord.new(row + row_offset, col + col_offset)
       {:ok, island} = Island.new(type, origin)
       island

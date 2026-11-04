@@ -45,7 +45,7 @@ defmodule Islands.Board.Cache.Generator do
   defp gen_board(board, type) do
     case Board.position_island(board, gen_island(type)) do
       %Board{} = board -> board
-      {:error, _} -> gen_board(board, type)
+      {:error, :overlapping_island} -> gen_board(board, type)
     end
   end
 
@@ -54,7 +54,7 @@ defmodule Islands.Board.Cache.Generator do
   defp gen_island(type) do
     case Island.new(type, gen_origin()) do
       {:ok, island} -> island
-      {:error, _} -> gen_island(type)
+      {:error, :invalid_island_location} -> gen_island(type)
     end
   end
 
